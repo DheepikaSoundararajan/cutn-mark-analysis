@@ -20,11 +20,8 @@ from dashboards.student_dashboard import (
 # ==================================================
 
 st.set_page_config(
-
     page_title="Academic Analytics Portal",
-
     layout="wide"
-
 )
 
 # ==================================================
@@ -41,11 +38,8 @@ def load_css():
     with open(css_path) as f:
 
         st.markdown(
-
             f"<style>{f.read()}</style>",
-
             unsafe_allow_html=True
-
         )
 
 load_css()
@@ -55,23 +49,18 @@ load_css()
 # ==================================================
 
 if "logged_in" not in st.session_state:
-
     st.session_state.logged_in = False
 
 if "role" not in st.session_state:
-
     st.session_state.role = ""
 
 if "name" not in st.session_state:
-
     st.session_state.name = ""
 
 if "register_number" not in st.session_state:
-
     st.session_state.register_number = ""
 
 if "subject" not in st.session_state:
-
     st.session_state.subject = ""
 
 # ==================================================
@@ -80,9 +69,7 @@ if "subject" not in st.session_state:
 
 if not st.session_state.logged_in:
 
-    # ==================================================
     # HEADER
-    # ==================================================
 
     col_logo, col_title = st.columns([1,5])
 
@@ -109,15 +96,11 @@ if not st.session_state.logged_in:
 
     st.divider()
 
-    # ==================================================
     # MAIN LAYOUT
-    # ==================================================
 
     left, right = st.columns([3,2])
 
-    # ==================================================
-    # LEFT SIDE IMAGE
-    # ==================================================
+    # LEFT IMAGE
 
     with left:
 
@@ -126,20 +109,15 @@ if not st.session_state.logged_in:
             use_container_width=True
         )
 
-    # ==================================================
-    # RIGHT SIDE LOGIN CARD
-    # ==================================================
+    # LOGIN CARD
 
     with right:
 
         st.markdown("## 🔐 Login Portal")
 
         role = st.selectbox(
-
             "Select Role",
-
             ["Admin", "Staff", "Student"]
-
         )
 
         username = st.text_input(
@@ -147,11 +125,8 @@ if not st.session_state.logged_in:
         )
 
         password = st.text_input(
-
             "Password (DOB)",
-
             type="password"
-
         )
 
         login_button = st.button(
@@ -159,17 +134,13 @@ if not st.session_state.logged_in:
             use_container_width=True
         )
 
-        # ==========================================
         # LOGIN LOGIC
-        # ==========================================
 
         if login_button:
 
             login_success = False
 
-            # ======================================
             # ADMIN LOGIN
-            # ======================================
 
             if role == "Admin":
 
@@ -182,30 +153,20 @@ if not st.session_state.logged_in:
                     data = user.to_dict()
 
                     if (
-
-                        data["username"]
-                        == username
-
+                        data["username"] == username
                         and
-
-                        data["dob"]
-                        == password
-
+                        data["dob"] == password
                     ):
 
                         login_success = True
 
                         st.session_state.logged_in = True
-
                         st.session_state.role = role
-
                         st.session_state.name = data["name"]
 
                         st.rerun()
 
-            # ======================================
             # STAFF LOGIN
-            # ======================================
 
             elif role == "Staff":
 
@@ -218,23 +179,15 @@ if not st.session_state.logged_in:
                     data = user.to_dict()
 
                     if (
-
-                        data["username"]
-                        == username
-
+                        data["username"] == username
                         and
-
-                        data["dob"]
-                        == password
-
+                        data["dob"] == password
                     ):
 
                         login_success = True
 
                         st.session_state.logged_in = True
-
                         st.session_state.role = role
-
                         st.session_state.name = data["name"]
 
                         st.session_state.subject = (
@@ -243,9 +196,7 @@ if not st.session_state.logged_in:
 
                         st.rerun()
 
-            # ======================================
             # STUDENT LOGIN
-            # ======================================
 
             elif role == "Student":
 
@@ -272,15 +223,15 @@ if not st.session_state.logged_in:
                                 "student_name",
                                 "Student"
                             )
-)
+                        )
 
                         st.session_state.register_number = (
                             data.get(
                                 "register_number",
-                                 username
+                                username
                             )
                         )
-                        
+
                         st.rerun()
 
             if not login_success:
@@ -288,7 +239,6 @@ if not st.session_state.logged_in:
                 st.error(
                     "Invalid Username or Password"
                 )
-            
 
 # ==================================================
 # DASHBOARD
@@ -301,9 +251,7 @@ else:
     with col1:
 
         st.title(
-
             f"{st.session_state.role} Dashboard"
-
         )
 
     with col2:
@@ -311,28 +259,20 @@ else:
         if st.button("Logout"):
 
             st.session_state.logged_in = False
-
             st.session_state.role = ""
-
             st.session_state.name = ""
-
             st.session_state.register_number = ""
-
             st.session_state.subject = ""
 
             st.rerun()
 
     st.success(
-
         f"Welcome {st.session_state.name}"
-
     )
 
     st.markdown("---")
 
-    # ==================================================
     # ROLE DASHBOARD
-    # ==================================================
 
     if st.session_state.role == "Admin":
 
@@ -349,229 +289,3 @@ else:
         show_student_dashboard(
             st.session_state.register_number
         )
-
-import os
-import streamlit as st
-
-from utils.firebase_config import db
-
-from dashboards.admin_dashboard import (
-    show_admin_dashboard
-)
-
-from dashboards.staff_dashboard import (
-    show_staff_dashboard
-)
-
-from dashboards.student_dashboard import (
-    show_student_dashboard
-)
-
-# -------------------------------------------------
-# PAGE CONFIG
-# -------------------------------------------------
-
-st.set_page_config(
-    page_title="Academic Analytics Portal",
-    layout="wide"
-)
-
-# -------------------------------------------------
-# LOAD CSS
-# -------------------------------------------------
-
-def load_css():
-
-    css_path = os.path.join(
-        "styles",
-        "style.css"
-    )
-
-    with open(css_path) as f:
-
-        st.markdown(
-            f"<style>{f.read()}</style>",
-            unsafe_allow_html=True
-        )
-
-load_css()
-
-# -------------------------------------------------
-# SESSION STATE
-# -------------------------------------------------
-
-if "logged_in" not in st.session_state:
-    st.session_state.logged_in = False
-
-if "role" not in st.session_state:
-    st.session_state.role = ""
-
-if "name" not in st.session_state:
-    st.session_state.name = ""
-
-# -------------------------------------------------
-# LOGIN PAGE
-# -------------------------------------------------
-
-if not st.session_state.logged_in:
-
-    st.markdown(
-        """
-        <div style='text-align:center;'>
-            <h1>
-                Central University Of TamilNadu
-            </h1>
-
-            <h4>
-                Role-Based Academic Performance System
-            </h4>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-    st.markdown("<br>", unsafe_allow_html=True)
-
-    # ----------------------------------------
-    # TOP IMAGE SECTION
-    # ----------------------------------------
-
-    col1, col2 = st.columns([1,2])
-
-    with col1:
-
-        logo_path = os.path.join(
-            "assets",
-            "logo.png"
-        )
-
-        st.image(
-            logo_path,
-            width=220
-        )
-
-    with col2:
-
-        university_path = os.path.join(
-            "assets",
-            "university.jpg"
-        )
-
-        st.image(
-            university_path,
-            use_container_width=True
-        )
-
-    st.markdown("<br>", unsafe_allow_html=True)
-
-    # ----------------------------------------
-    # LOGIN CARD
-    # ----------------------------------------
-
-    left, center, right = st.columns([1,2,1])
-
-    with center:
-
-        st.subheader("🔐 Login Portal")
-
-        role = st.selectbox(
-            "Select Role",
-            ["Admin", "Staff", "Student"]
-        )
-
-        username = st.text_input(
-            "Username"
-        )
-
-        password = st.text_input(
-            "Password (DOB)",
-            type="password"
-        )
-
-        login_button = st.button("Login")
-
-        # ----------------------------------------
-        # LOGIN LOGIC
-        # ----------------------------------------
-
-        if login_button:
-
-            collection_name = role.lower()
-
-            users = db.collection(
-                collection_name
-            ).stream()
-
-            login_success = False
-
-            for user in users:
-
-                data = user.to_dict()
-
-                if (
-                    data["username"] == username
-                    and data["dob"] == password
-                ):
-
-                    login_success = True
-
-                    st.session_state.logged_in = True
-
-                    st.session_state.role = role
-
-                    st.session_state.name = data["name"]
-
-                    st.rerun()
-
-            if not login_success:
-
-                st.error(
-                    "Invalid Username or Password"
-                )
-
-# -------------------------------------------------
-# DASHBOARD PAGE
-# -------------------------------------------------
-
-else:
-
-    # TOP NAVBAR
-
-    col1, col2 = st.columns([8, 1])
-
-    with col1:
-
-        st.title(
-            f"{st.session_state.role} Dashboard"
-        )
-
-    with col2:
-
-        if st.button("Logout"):
-
-            st.session_state.logged_in = False
-            st.session_state.role = ""
-            st.session_state.name = ""
-
-            st.rerun()
-
-    st.success(
-        f"Welcome {st.session_state.name}"
-    )
-
-    st.markdown("---")
-
-    # ROLE-BASED DASHBOARDS
-
-    if st.session_state.role == "Admin":
-
-        show_admin_dashboard()
-
-    elif st.session_state.role == "Staff":
-
-        show_staff_dashboard()
-
-    elif st.session_state.role == "Student":
-
-        show_student_dashboard()
-
