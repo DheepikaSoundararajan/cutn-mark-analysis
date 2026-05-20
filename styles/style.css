@@ -1,0 +1,102 @@
+/* ---------------------------------------------------
+   GLOBAL APP & BACKGROUND
+--------------------------------------------------- */
+.stApp {
+    background-color: #f8fafc; /* Crisp, clean off-white */
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+}
+
+/* ---------------------------------------------------
+   HEADER BANNER (CUTN STYLE)
+--------------------------------------------------- */
+.university-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    padding: 30px 20px;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.university-header h1 {
+    color: #ffffff !important;
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    margin: 0 0 8px 0 !important;
+    letter-spacing: 0.5px;
+}
+
+.university-header h4 {
+    color: #93c5fd !important;
+    font-size: 16px !important;
+    margin: 0 !important;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* ---------------------------------------------------
+   SIDEBAR NAV (ENTERPRISE NAVY)
+--------------------------------------------------- */
+section[data-testid="stSidebar"] {
+    background-color: #0f172a !important; /* Deep Navy */
+}
+
+section[data-testid="stSidebar"] * {
+    color: #f1f5f9 !important;
+}
+
+/* ---------------------------------------------------
+   PREMIUM METRIC CARDS
+--------------------------------------------------- */
+[data-testid="metric-container"] {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 20px !important;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border-left: 5px solid #1e40af; /* Academic Blue accent bar */
+}
+
+[data-testid="stMetricLabel"] {
+    font-size: 13px !important;
+    color: #64748b !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+[data-testid="stMetricValue"] {
+    font-size: 28px !important;
+    color: #0f172a !important;
+    font-weight: 700 !important;
+}
+
+/* ---------------------------------------------------
+   CLEAN CORPORATE BUTTONS
+--------------------------------------------------- */
+.stButton > button {
+    background-color: #1e40af !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 10px 24px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.stButton > button:hover {
+    background-color: #1d4ed8 !important;
+    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.2);
+}
+
+/* ---------------------------------------------------
+   DATA TABLES & TILES
+--------------------------------------------------- */
+[data-testid="stDataFrame"] {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}

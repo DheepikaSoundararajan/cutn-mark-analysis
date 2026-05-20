@@ -1,0 +1,6 @@
+subject,co_number,co_statement,max_mark,target_percentage
+Cloud,CO1,Understand cloud computing concepts,20,60
+Cloud,CO2,Analyze cloud service models,20,60
+Cloud,CO3,Apply virtualization techniques,20,65
+Cloud,CO4,Evaluate cloud security mechanisms,20,70
+Cloud,CO5,Develop scalable cloud applications,20,70

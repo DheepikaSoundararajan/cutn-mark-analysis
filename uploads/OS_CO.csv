@@ -1,0 +1,6 @@
+subject,co_number,co_statement,max_mark,target_percentage
+OS,CO1,Understand operating system concepts,20,60
+OS,CO2,Analyze process scheduling algorithms,20,60
+OS,CO3,Apply memory management techniques,20,65
+OS,CO4,Evaluate synchronization methods,20,70
+OS,CO5,Design efficient operating systems,20,70

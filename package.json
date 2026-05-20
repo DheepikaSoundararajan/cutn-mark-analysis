@@ -1,0 +1,24 @@
+{
+  "name": "cutn-mark-analysis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DheepikaSoundararajan/cutn-mark-analysis.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/DheepikaSoundararajan/cutn-mark-analysis/issues"
+  },
+  "homepage": "https://github.com/DheepikaSoundararajan/cutn-mark-analysis#readme",
+  "dependencies": {
+    "firebase-admin": "^13.10.0"
+  }
+}

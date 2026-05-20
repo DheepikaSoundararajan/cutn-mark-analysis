@@ -1,0 +1,6 @@
+subject,co_number,co_statement,max_mark,target_percentage
+CN,CO1,Understand networking fundamentals,20,60
+CN,CO2,Analyze OSI and TCP/IP models,20,60
+CN,CO3,Apply routing and switching concepts,20,65
+CN,CO4,Evaluate network protocols,20,70
+CN,CO5,Design secure communication systems,20,70

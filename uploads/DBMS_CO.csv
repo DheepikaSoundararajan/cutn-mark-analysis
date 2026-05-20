@@ -1,0 +1,6 @@
+subject,co_number,co_statement,max_mark,target_percentage
+DBMS,CO1,Understand database concepts,20,60
+DBMS,CO2,Design ER models and schemas,20,60
+DBMS,CO3,Apply SQL queries effectively,20,65
+DBMS,CO4,Analyze normalization techniques,20,70
+DBMS,CO5,Develop database applications,20,70
